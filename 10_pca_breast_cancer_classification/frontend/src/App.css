@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * {
   margin: 0;
@@ -7,13 +7,21 @@
   font-family: 'Inter', sans-serif;
 }
 
-body {
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Beautiful slow moving gradient background */
+#root {
+  min-height: 100vh;
   background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0f172a);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
-  color: #f8fafc;
-  height: 100vh;
-  overflow: hidden; /* Prevents moving up and down (scrolling) */
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes gradientBG {
@@ -26,76 +34,67 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  /* Removed border line here */
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
 }
 
 .navbar h2 {
   font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
+  font-size: 1.4rem;
   background: linear-gradient(90deg, #38bdf8, #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .main-layout {
+  flex: 1; /* Takes up remaining space below navbar */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px); /* Fits exactly in the remaining page height */
-  padding: 10px 40px;
-  gap: 40px;
+  gap: 60px;
+  padding: 40px;
+  flex-wrap: wrap; /* Allows safe wrapping on smaller screens */
 }
 
 .hero-section {
-  max-width: 450px;
+  max-width: 500px;
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 15px;
-  background: linear-gradient(135deg, #ffffff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .hero-section p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #cbd5e1;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
+/* The exact styling for the glass card without weird borders */
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 20px; /* Removed border lines */
-  padding: 30px;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
   color: #94a3b8;
   font-weight: 600;
   text-transform: uppercase;
@@ -104,104 +103,80 @@ body {
 
 .input-group input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background: rgba(15, 23, 42, 0.6);
-  border: none; /* Removed input borders */
-  border-radius: 10px;
+  border: none;
+  border-radius: 12px;
   color: white;
-  font-size: 0.95rem;
-  transition: box-shadow 0.3s;
+  font-size: 1rem;
+  transition: box-shadow 0.2s;
 }
 
 .input-group input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 0 2px #38bdf8;
 }
 
 .predict-btn {
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   background: linear-gradient(90deg, #38bdf8, #818cf8);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 5px;
-  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+  transition: transform 0.2s;
 }
 
 .predict-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
-}
-
-.predict-btn:active {
-  transform: translateY(1px);
-}
-
-.predict-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
 }
 
 .result-box {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 12px;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 15px;
   text-align: center;
-  animation: fadeIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border: none; /* Removed border lines */
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  border: none;
 }
 
 .result-box.malignant {
   background: rgba(239, 68, 68, 0.15);
-  box-shadow: inset 0 0 15px rgba(239, 68, 68, 0.1);
 }
 
 .result-box.malignant h2 {
-  color: #f87171;
+  color: #fca5a5;
 }
 
 .result-box.benign {
   background: rgba(34, 197, 94, 0.15);
-  box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.1);
 }
 
 .result-box.benign h2 {
-  color: #4ade80;
+  color: #86efac;
 }
 
 .result-box p {
-  color: #94a3b8;
-  font-size: 0.85rem;
+  color: #e2e8f0;
+  font-size: 0.9rem;
   margin-top: 5px;
 }
 
 .result-box h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 800;
   margin-top: 5px;
 }
 
-/* Responsiveness */
-@media (max-width: 900px) {
-  body {
-    overflow: auto; /* Allow scroll on very small screens so content isn't cut off */
-  }
+@media (max-width: 950px) {
   .main-layout {
     flex-direction: column;
     text-align: center;
-    height: auto;
-    padding-top: 30px;
+    gap: 30px;
   }
   .input-group label {
     text-align: left;
