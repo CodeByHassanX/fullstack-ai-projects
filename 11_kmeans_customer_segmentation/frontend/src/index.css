@@ -1,0 +1,167 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0d1117;
+  
+  --bg-gradient: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --primary: #58a6ff;
+  --primary-hover: #79c0ff;
+  --text-main: #c9d1d9;
+  --text-muted: #8b949e;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.2em;
+  line-height: 1.1;
+  background: -webkit-linear-gradient(45deg, #58a6ff, #bc8cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.2em;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  transition: box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.form-group {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85em;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  color: white;
+  font-size: 0.95em;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+}
+
+button.submit-btn {
+  background: linear-gradient(90deg, #58a6ff, #3178c6);
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 0.5rem;
+}
+
+button.submit-btn:hover {
+  opacity: 0.9;
+}
+
+button.submit-btn:active {
+  transform: scale(0.98);
+}
+
+button.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result-container {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.result-container h2 {
+  margin: 0 0 0.3rem 0;
+  color: var(--primary);
+  font-size: 1.2em;
+}
+
+.result-container p {
+  margin: 0;
+  font-size: 1em;
+  color: var(--text-main);
+}
+
+.error-message {
+  color: #ff7b72;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
